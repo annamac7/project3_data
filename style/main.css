@@ -26,9 +26,12 @@ h5 {
 }
 
 #img_here{
-  width: 600px;
+
   height: 400px;
-  background: blue;
+  background-image: url("../img/cover.jpg");
+  background-position: center;
+  background-size: cover;
+
 }
 
 .article {
@@ -38,7 +41,11 @@ h5 {
 }
 
 .article_content {
-  /* margin: 20px 0px; */
+  margin-top: 100px;
+  width: 600px;
+  /* height: 400px; */
+margin-left: auto;
+margin-right: auto;
   background: yellow;
   /* width: 600px; */
 }
