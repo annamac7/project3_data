@@ -1,8 +1,9 @@
 $(document).ready(function() {
-  console.log('ready!');
+  console.log('ready! 1');
   loadData();
 });
 
+let allStates = [];
 let dataArr = [];
 let dataCM = [];
 let dataAE = [];
@@ -13,38 +14,44 @@ let y = [];
 let stateArr = [];
 let all = [];
 let ces = [];
-let elcm = [];
-let ht = [];
-let ncm = [];
-let ptm = [];
-let so = [];
-let soo = [];
-let compMath = [];
-let ae = [];
-let lpss = [];
-let theName;
+// let elcm = [];
+// let ht = [];
+// let ncm = [];
+// let ptm = [];
+// let so = [];
+// let soo = [];
+// let compMath = [];
+// let ae = [];
+// let lpss = [];
+// let theName;
 
 
 
 function loadData() {
+  console.log(2)
   $.getJSON("data.json", function(states) {
+    console.log(3)
     parseData(states);
+    console.log('after parse')
+    loadMap()
   });
 }
 
 function parseData(states) {
 
-
+  console.log(4)
   $.each(states, function(i) {
+    allStates.push(states[i])
     stateArr.push(states[i].state);
     all.push(states[i].all);
     ces.push(states[i].ces);
-    code.push(states[i].letter);
+    // code.push(states[i].letter);
     region.push(states[i].region);
     y.push(states[i].y);
     x.push(states[i].x);
-
   });
+
+
 
   //create data array for chart 1
   for (var i = 0; i < all.length; i++) {
@@ -59,8 +66,9 @@ function parseData(states) {
     };
   }
 
+}
 
-  // map chart
+function loadMap() {
   Highcharts.chart('container', {
     chart: {
       type: 'tilemap',
@@ -143,114 +151,4 @@ function parseData(states) {
       data: dataArr
     }]
   });
-
-
-
-  var colors = Highcharts.getOptions().colors;
-  console.log(colors)
-  Highcharts.chart('steam', {
-
-    chart: {
-      type: 'streamgraph',
-      marginBottom: 30,
-      zoomType: 'x'
-    },
-
-    // Make sure connected countries have similar colors
-    colors: [
-      colors[0] = '#04ADBF' ,
-      colors[1] = '#F2E0C9',
-      colors[2] ='#04BFBF',
-      colors[3] = '#A0A603',
-      colors[4] = '#025959',
-
-
-      colors[5] = '#04ADBF',
-      colors[6] ='#F2E0C9' ,
-
-    ],
-
-    title: {
-      floating: true,
-      align: 'center',
-      text: 'Breakdown of Female Occupation Percentages by State ',
-      y: 10
-    },
-    subtitle: {
-
-      floating: true,
-      align: 'center',
-      y: 30,
-      text: 'Source: <a href="https://www.sports-reference.com/olympics/winter/1924/">sports-reference.com</a>'
-    },
-
-    xAxis: {
-      maxPadding: 0,
-      type: 'category',
-      crosshair: false,
-      categories: code,
-      labels: {
-        align: 'left',
-        reserveSpace: true
-      },
-      lineWidth: 0,
-      margin: 10,
-      tickWidth: 0
-    },
-
-    yAxis: {
-      visible: false,
-      startOnTick: false,
-      endOnTick: false
-    },
-
-    legend: false,
-
-    plotOptions: {
-      series: {
-        label: {
-          minFontSize: 5,
-          maxFontSize: 15,
-          style: {
-            color: 'rgba(255,255,255,0.75)'
-          }
-        }
-      }
-    },
-
-    // Data parsed with olympic-medals.node.js
-    series: [{
-      name: "Computer, Engineering & Science",
-      data: states.map(x => x.ces )
-    }, {
-      name: "Management, Business & Finance",
-      data: states.map(x => x.mbf)
-    }, {
-      name: "Education, Legal, Community Service, Arts & Media",
-      data:states.map(x => x.elcm)
-    },{
-      name: "Healthcare Practitioners & Technical Occupations",
-      data:states.map(x => x.ht)
-    },{
-      name: "Service Occupations",
-      data:states.map(x => x.so)
-    },{
-      name: "Sales and Office",
-      data:states.map(x => x.soo)
-    },{
-      name: "Natural Resources, Construction, and Maintenance",
-      data:states.map(x => x.ncm)
-    },{
-      name: "Production, Transport, and Material Moving",
-      data:states.map(x => x.ptm)
-    },
-  ],
-
-    exporting: {
-      sourceWidth: 800,
-      sourceHeight: 600
-    }
-
-  });
-
 }

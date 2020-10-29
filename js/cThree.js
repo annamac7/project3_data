@@ -9,31 +9,26 @@ let myData = {
   ptm:	86372
 }
 
-// let myData = {
-//   'Management, Business & Finance':	120763,
-//   'Computer, Engineering & Science':	25518,
-//   'Education, Legal, Community Service, Arts & Media':	136501,
-//   'Health Care Practitoners and Technical Occupations':	107926,
-//   'Service':	196080,
-//   'Sales & Office':	309437,
-//   'Natural Resources, Construction & Maintenance':	9483,
-//   'Production, Transport & Material Moving':	86372
-// }
+
 
 
 $(document).ready(function() {
   console.log('ready!');
-  loadChart();
+
+  loadPie();
 
 })
 
+let compMath_m = [];
+let archEng_m = [];
 
 
 
 
 
 
-function loadChart() {
+
+function loadPie() {
   console.log(4)
   var chart2 = c3.generate({
     bindto: '#pie',
