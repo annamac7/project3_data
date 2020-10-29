@@ -1,59 +1,34 @@
-let ces = [];
-let elcm = [];
-let ht = [];
-let ncm = [];
-let ptm = [];
-let so = [];
-let soo = [];
-let cesVal;
-let elcmVal;
-let htVal;
-let ncmVal;
-let soVal;
-let ptmVal;
-let sooVal;
+let myData = {
+  mbf:	120763,
+  ces:	25518,
+  elcm:	136501,
+  ht:	107926,
+  so:	196080,
+  soo:	309437,
+  ncm:	9483,
+  ptm:	86372
+}
+
+// let myData = {
+//   'Management, Business & Finance':	120763,
+//   'Computer, Engineering & Science':	25518,
+//   'Education, Legal, Community Service, Arts & Media':	136501,
+//   'Health Care Practitoners and Technical Occupations':	107926,
+//   'Service':	196080,
+//   'Sales & Office':	309437,
+//   'Natural Resources, Construction & Maintenance':	9483,
+//   'Production, Transport & Material Moving':	86372
+// }
 
 
 $(document).ready(function() {
   console.log('ready!');
-  loadData();
+  loadChart();
 
 })
 
 
 
-function loadData(){
-  $.getJSON("data.json", function(states) {
-    parseData(states);
-      loadChart();
-
-
-  });
-}
-
-function parseData(states){
-  // console.log("here")
-  ces = states.map(s => s.ces);
-  cesVal = getAverage(ces);
-
-  elcm = states.map(s => s.elcm);
-  elcmVal = getAverage(elcm);
-
-  ht = states.map(s => s.ht);
-  htVal = getAverage(ht);
-
-  ncm = states.map(s => s.ncm);
-  ncmVal = getAverage(ncm);
-
-  ptm = states.map(s => s.ptm);
-  ptmVal = getAverage(ptm);
-
-  so = states.map(s => s.so);
-  soVal = getAverage(so);
-
-  soo = states.map(s => s.soo);
-  sooVal = getAverage(soo);
-}
 
 
 
@@ -64,13 +39,25 @@ function loadChart() {
     bindto: '#pie',
     data: {
       columns: [
-        ['Computer, Engineering & Science', cesVal],
-        ['duke', 29],
+        ['Management, Business & Finance', myData.mbf],
+        ['Computer, Engineering & Science', myData.ces],
+        ['Education, Legal, Community Service, Arts & Media', myData.elcm],
+        ['Health Care Practitoners and Technical Occupations', myData.ht],
+        ['Service', myData.so],
+        ['Sales & Office', myData.soo],
+        ['Natural Resources, Construction & Maintenance', myData.ncm],
+        ['Production, Transport & Material Moving', myData.ptm]
       ],
       type: 'pie',
       colors: {
-        UNC: 'lightblue',
-        duke: 'darkblue'
+        'Management, Business & Finance': '#a4aaab',
+        'Computer, Engineering & Science': 'cyan',
+        'Education, Legal, Community Service, Arts & Media' : '#8b8e8f',
+        'Health Care Practitoners and Technical Occupations' : '#bec1c2',
+        'Service' : '#5e6061',
+        'Natural Resources, Construction & Maintenance' : '#7c8082',
+        'Production, Transport & Material Moving' : '#bcc0c2',
+        'Sales & Office' : '#969899'
       },
       onclick: function(d, i) {
         console.log("onclick", d, i);
