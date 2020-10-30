@@ -5,7 +5,7 @@ var categories = [];
 $(document).ready(function() {
   console.log('ready! line');
   loadDataNow();
-
+  $('#table_id').DataTable()
 
 });
 
@@ -24,7 +24,6 @@ function parseDataNow(states) {
 }
 //
 function loadLine(){
-  console.log("here")
   Highcharts.setOptions({
       lang: {
         thousandsSep: ','

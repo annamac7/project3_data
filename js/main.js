@@ -1,71 +1,39 @@
 $(document).ready(function() {
-  console.log('ready! 1');
+  console.log('ready! main');
   loadData();
 });
 
 let allStates = [];
 let dataArr = [];
-let dataCM = [];
-let dataAE = [];
-let code = [];
-let region = [];
-let x = [];
-let y = [];
-let stateArr = [];
-let all = [];
 let ces = [];
-// let elcm = [];
-// let ht = [];
-// let ncm = [];
-// let ptm = [];
-// let so = [];
-// let soo = [];
-// let compMath = [];
-// let ae = [];
-// let lpss = [];
-// let theName;
-
-
+let curr = {};
 
 function loadData() {
-  console.log(2)
   $.getJSON("data.json", function(states) {
-    console.log(3)
     parseData(states);
-    console.log('after parse')
     loadMap()
   });
 }
 
 function parseData(states) {
 
-  console.log(4)
   $.each(states, function(i) {
     allStates.push(states[i])
-    stateArr.push(states[i].state);
-    all.push(states[i].all);
-    ces.push(states[i].ces);
-    // code.push(states[i].letter);
-    region.push(states[i].region);
-    y.push(states[i].y);
-    x.push(states[i].x);
+
   });
 
-
-
   //create data array for chart 1
-  for (var i = 0; i < all.length; i++) {
-    dataArr[i] = {
-      'hc-a2': code[i],
-      name: stateArr[i],
-      region: region[i],
-      x: x[i],
-      y: y[i],
-      value: ces[i]
-
+  for (var i = 0; i < allStates.length; i++) {
+    curr = {
+            'hc-a2': allStates[i].letter,
+            name: allStates[i].state,
+            region: allStates[i].region,
+            x: allStates[i].x,
+            y: allStates[i].y,
+            value: allStates[i].ces
     };
+    dataArr.push(curr);
   }
-
 }
 
 function loadMap() {
@@ -151,4 +119,13 @@ function loadMap() {
       data: dataArr
     }]
   });
+}
+
+function getAverage(array){
+  var total = 0;
+  for(var i = 0; i < array.length; i++) {
+    total += array[i];
+}
+var avg = total / array.length;
+return avg
 }

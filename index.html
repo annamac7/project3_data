@@ -12,10 +12,7 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
    <link href="style/c3.min.css" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-
    <script src="https://kit.fontawesome.com/06e3d322e2.js" crossorigin="anonymous"></script>
-
-
    <script src="https://code.highcharts.com/highcharts.js"></script>
    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
    <script src="https://code.highcharts.com/modules/tilemap.js"></script>
@@ -87,15 +84,56 @@
          </div>
        </div>
        <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         It is general knowledge that women face discrimination in STEM fields, but how much? This article examines the difference in the number of women in STEM compared to other fields as well as compares the difference in earnings between male and
+         females in STEM fields.
+       </p>
+       <p>
+         According to data from the 2018 census that examined data from 2013-2018, women in STEM make up the second smallest percentage of working women in the US. With jobs in natural recources, construction, and maintenance are the smallest. The
+         largest percentage of women are employed in sales and office jobs.
+       </p>
+       <div class="my-5" id="pie"></div>
+       <p>
+         Inside the field of STEM, the number of women hardly scratch the number of men, especially in Computer and Math and Architecture and Engineering.
+       </p>
+       <!-- <h3 class="text-center my-3">Number of people (male and female) employeed in STEM occupations</h3> -->
+       <table class="table my-5">
+         <thead>
+           <tr>
+             <th scope="col">Role</th>
+             <th scope="col">Male</th>
+             <th scope="col">Female</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <th scope="row">Computer and Math</th>
+             <td>3,426,408</td>
+             <td>1,207,452</td>
+
+           </tr>
+           <tr>
+             <th scope="row">Architecture and Engineering</th>
+             <td>2,385,386</td>
+             <td>436,725</td>
+
+           </tr>
+           <tr>
+             <th scope="row">Life, and Physical, and Social Sciences</th>
+             <td>758,714</td>
+             <td>657,518</td>
+
+           </tr>
+         </tbody>
+       </table>
+
+       <p>
+         The average percent of women in STEM jobs in each state is around 26%. The lowest percentage being 19.2% in Utah and the highest in DC where women make up 40% of workers in STEM.
        </p>
 
 
-
-     <figure class="highcharts-figure">
-       <div id="line" style="width:100%; height:600px;"></div>
-     </figure>
+       <figure class="highcharts-figure">
+         <div id="line" class="my-5" style="width:100%; height:600px;"></div>
+       </figure>
 
 
        <p>
@@ -103,10 +141,28 @@
          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
        </p>
        <figure class="highcharts-figure">
-         <div id="container" style="width:100%; height:600px;"></div>
+         <div id="container" class="my-5"  style="width:100%; height:600px;"></div>
        </figure>
        <div class="my-5" id="pie"></div>
 
+       <table id="table_id">
+         <thead>
+           <tr>
+             <th>State</th>
+             <th>Role</th>
+             <th>Percent Female</th>
+             <th>Avg Earnings</th>
+           </tr>
+         </thead>
+         <tfoot>
+           <tr>
+             <th>State</th>
+             <th>Role</th>
+             <th>Percent Female</th>
+             <th>Avg Earnings</th>
+           </tr>
+         </tfoot>
+       </table>
 
 
      </div>
@@ -131,9 +187,11 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
    <script src="https://d3js.org/d3.v5.min.js"></script>
    <script src="js/c3.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
    <script src="js/lineGraph.js"></script>
    <script src="js/cThree.js"></script>
    <script src="js/main.js"></script>
+    <script src="js/dataTable.js"></script>
  </body>
 
  </html>
