@@ -9,23 +9,14 @@ let myData = {
   ptm:	86372
 }
 
-
-
-
 $(document).ready(function() {
   console.log('ready!');
-
   loadPie();
 
 })
 
 let compMath_m = [];
 let archEng_m = [];
-
-
-
-
-
 
 
 function loadPie() {

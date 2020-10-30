@@ -1,30 +1,36 @@
+var allData = [];
+var categories = [];
+
+
 $(document).ready(function() {
-  console.log('ready! 1');
-  loadData();
+  console.log('ready! line');
+  loadDataNow();
+
+
 });
 
-let allData = [];
-let categories = [];
-let men = [];
-let female = [];
 
-function loadData() {
+function loadDataNow() {
   $.getJSON("earnings.json", function(states) {
-    parseData(states);
-    console.log(allData)
-    loadLine();
+    parseDataNow(states);
+loadLine()
   });
 }
 
-function parseData(states) {
+function parseDataNow(states) {
   allData = states;
-  categories = states.map(x => x.state)
-  men = states.map
+  categories = states.map(x => x.state);
 
 }
 //
 function loadLine(){
+  console.log("here")
+  Highcharts.setOptions({
+      lang: {
+        thousandsSep: ','
+      }
 
+    });
   Highcharts.chart('line', {
       chart: {
           type: 'line'
@@ -40,12 +46,17 @@ function loadLine(){
       },
       yAxis: {
           title: {
-              text: 'Temperature (°C)'
+              text: '2018 INFLATION-ADJUSTED DOLLARS '
           }
       },
+      tooltip: {
+        pointFormat: '<b>{point.series.name} <b><br>   ${point.y:,.0f}',
+        valuePrefix: '$',
+        valueSuffix: ' USD'
+    },
       plotOptions: {
           line: {
-            
+
               enableMouseTracking: true
           }
       },
