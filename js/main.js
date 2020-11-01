@@ -9,10 +9,12 @@ let curr = {};
 let percent_f = []
 let names = []
 
+
 function loadData() {
   $.getJSON("data.json", function(states) {
     parseData(states);
-    loadMap()
+    loadMap();
+
   });
 }
 
@@ -27,16 +29,20 @@ function parseData(states) {
   //create data array for chart 1
   for (var i = 0; i < percents.length; i++) {
     curr = {
-            'hc-a2': percents[i].letter,
-            name: percents[i].state,
-            region: percents[i].region,
-            x: percents[i].x,
-            y: percents[i].y,
-            value: percents[i].ces
+      'hc-a2': percents[i].letter,
+      name: percents[i].state,
+      region: percents[i].region,
+      x: percents[i].x,
+      y: percents[i].y,
+      value: percents[i].ces
     };
     dataArr.push(curr);
   }
 }
+
+
+
+
 
 function loadMap() {
   Highcharts.chart('container', {
@@ -123,11 +129,11 @@ function loadMap() {
   });
 }
 
-function getAverage(array){
+function getAverage(array) {
   var total = 0;
-  for(var i = 0; i < array.length; i++) {
+  for (var i = 0; i < array.length; i++) {
     total += array[i];
-}
-var avg = total / array.length;
-return avg
+  }
+  var avg = total / array.length;
+  return avg
 }

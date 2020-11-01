@@ -8,10 +8,21 @@ let myData = {
   ncm:	9483,
   ptm:	86372
 }
+//
+// Computer and Math	3,426,408	1,207,452
+// Architecture and Engineering	2,385,386	436,725
+// Life, and Physical, and Social Sciences	758,714	657,518
+
+let subjects = ['Computer and Math', 'Architecture and Engineering', 'Life, Physical, and Social Sciences']
+
+  let men = [3426408, 2385386, 758714 ];
+  let female = [207452,436725,657518];
+
 
 $(document).ready(function() {
   console.log('ready!');
   loadPie();
+  loadTable();
 
 })
 
@@ -56,6 +67,57 @@ function loadPie() {
       }
     }
   });
+}
+
+
+function loadTable() {
+  console.log('hey')
+  var table = document.createElement('table');
+
+  var tr = document.createElement('tr');
+  var th1 = document.createElement('th');
+  var th2 = document.createElement('th');
+  var th3 = document.createElement('th');
+
+  var h1 = document.createTextNode('Role');
+  var h2 = document.createTextNode('Male');
+  var h3 = document.createTextNode('Female');
+
+  th1.appendChild(h1);
+  th2.appendChild(h2);
+  th3.appendChild(h3);
+  tr.appendChild(th1);
+  tr.appendChild(th2);
+  tr.appendChild(th3)
+  table.appendChild(tr);
+
+  for (var i = 0; i < 3; i++) {
+    var tr = document.createElement('tr');
+
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+
+    var text1 = document.createTextNode(subjects[i]);
+    var text2 = document.createTextNode(men[i]);
+    var text3 = document.createTextNode(female[i])
+
+    td1.appendChild(text1);
+    td2.appendChild(text2);
+    td3.appendChild(text3);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3)
+
+    table.appendChild(tr);
+  }
+
+  table.className = "table my-5 table-hover";
+  // tr.className = "row"
+
+
+$('#table_here').append(table);
+
 }
 
 function getAverage(array){

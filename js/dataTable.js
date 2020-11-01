@@ -33,7 +33,7 @@ $(document).ready(function() {
 });
 
 function buildTable(){
-  alert('hello')
+
 
   for(var i=0; i < percents.length; i++){
 // console.log(p[i]);
