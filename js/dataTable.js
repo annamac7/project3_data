@@ -1,56 +1,63 @@
-// let percents = [];
-// let earnings = [];
-// let data = [];
-// let arr = [];
-//
+let myTable = [];
+let o ={};
+let arr = [];
+let p;
+let newP = [];
+let e = [];
+let n = [];
+
+let alarm;
+
+
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+      buildTable()
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  loadData();
+  loadDataNow();
+  const result = await resolveAfter2Seconds();
+  console.log(result);
+  // expected output: "resolved"
+}
+
 $(document).ready(function() {
-  console.log('ready! data');
-console.log(allStates)
-  // $('#table_id').DataTable()
+  console.log('ready! line');
+  asyncCall()
 });
 
-//
-// function loadDataNumbers() {
-//   $.getJSON("data.json", function(items) {
-//     parseDataNumbers(items);
-//       //have the array of percents here
-//   });
-// }
-//
-// function parseDataNumbers(items) {
-//   percents = items;
-// }
-//
-//
-// function loadDataEarnings() {
-//   $.getJSON("earnings.json", function(items) {
-//     parseDataEarnings(items);
-//       //have the array of percents here
-//     buildTable();
-//   });
-// }
-//
-// function parseDataEarnings(items) {
-//   earnings = items;
-// }
-//
-// function buildTable(){
-//   console.log(earnings);
-//   console.log(percents);
-//   for(var i=0; i < earnings.length; i++){
-//     data[i] = {
-//       state: earnings[i].state,
-//       role: 'role',
-//       percent: percents[i].ces,
-//       avg: earnings[i].all_f
-//     };
-//   }
-//   arr = Object.entries(data);
-//   console.log( arr)
-//  $('#table_id').DataTable({
-//     data: arr,
-//    retrieve: true,
-//     paging: false
-//  });
-//
-// }
+function buildTable(){
+  alert('hello')
+
+  for(var i=0; i < percents.length; i++){
+// console.log(p[i]);
+    o = {
+      state: percents[i].state,
+      percent: percent_f[i] + '%',
+      avg: '$'+allEarnings[i]
+    };
+    myTable.push(o);
+  }
+  console.log(myTable)
+
+
+for(var j=0; j < percents.length; j++){
+  arr.push(Object.values(myTable[j]));
+}
+
+console.log(arr)
+ $('#table_id').DataTable({
+   columnDefs: [
+        { targets: [0, 2], visible: true},
+        { targets: '_all', visible: true }
+    ],
+    data: arr,
+ });
+
+}

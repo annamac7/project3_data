@@ -1,11 +1,11 @@
-var allData = [];
-var categories = [];
-
+let earnings = [];
+let categories = [];
+let allEarnings = [];
 
 $(document).ready(function() {
   console.log('ready! line');
-  loadDataNow();
-  $('#table_id').DataTable()
+  // loadDataNow();
+
 
 });
 
@@ -18,8 +18,11 @@ loadLine()
 }
 
 function parseDataNow(states) {
-  allData = states;
+  $.each(states, function(i) {
+    earnings.push(states[i])
+  });
   categories = states.map(x => x.state);
+  allEarnings = states.map(x => x.all_f)
 
 }
 //
@@ -61,10 +64,12 @@ function loadLine(){
       },
       series: [{
           name: 'Male',
-          data: allData.map(x => x.all_m)
+          data: earnings.map(x => x.all_m),
+          color: '#04BFBF'
       }, {
           name: 'Female',
-          data: allData.map(x => x.all_f)
+          data: earnings.map(x => x.all_f),
+          color: '#333'
       }]
   });
 

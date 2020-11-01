@@ -1,12 +1,13 @@
 $(document).ready(function() {
   console.log('ready! main');
-  loadData();
+  // loadData();
 });
 
-let allStates = [];
+let percents = [];
 let dataArr = [];
-let ces = [];
 let curr = {};
+let percent_f = []
+let names = []
 
 function loadData() {
   $.getJSON("data.json", function(states) {
@@ -18,19 +19,20 @@ function loadData() {
 function parseData(states) {
 
   $.each(states, function(i) {
-    allStates.push(states[i])
-
+    percents.push(states[i])
   });
-
+  percent_f = states.map(x => x.ces);
+  names = states.map(x => x.state);
+  // console.log(names)
   //create data array for chart 1
-  for (var i = 0; i < allStates.length; i++) {
+  for (var i = 0; i < percents.length; i++) {
     curr = {
-            'hc-a2': allStates[i].letter,
-            name: allStates[i].state,
-            region: allStates[i].region,
-            x: allStates[i].x,
-            y: allStates[i].y,
-            value: allStates[i].ces
+            'hc-a2': percents[i].letter,
+            name: percents[i].state,
+            region: percents[i].region,
+            x: percents[i].x,
+            y: percents[i].y,
+            value: percents[i].ces
     };
     dataArr.push(curr);
   }
@@ -77,7 +79,7 @@ function loadMap() {
       dataClasses: [{
         from: 0,
         to: 25,
-        color: '#04ADBF',
+        color: '#7ec5cc',
         name: '< 25%'
       }, {
         from: 25,
