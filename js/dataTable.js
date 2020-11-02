@@ -24,6 +24,10 @@ async function asyncCall() {
   loadDataNow();
   const result = await resolveAfter2Seconds();
   console.log(result);
+  let womenAvg = getAverage(earnings.map(x => x.all_f));
+  let maleAvg = getAverage(earnings.map(x => x.all_m));
+  let res =  womenAvg / maleAvg;
+  console.log(res)
   // expected output: "resolved"
 }
 
@@ -32,15 +36,14 @@ $(document).ready(function() {
   asyncCall()
 });
 
+
 function buildTable(){
-
-
   for(var i=0; i < percents.length; i++){
 // console.log(p[i]);
     o = {
       state: percents[i].state,
       percent: percent_f[i] + '%',
-      avg: '$'+allEarnings[i]
+      avg: currencyFormat(allEarnings[i])
     };
     myTable.push(o);
   }
@@ -60,4 +63,9 @@ console.log(arr)
     data: arr,
  });
 
+}
+//https://blog.abelotech.com/posts/number-currency-formatting-javascript/
+
+function currencyFormat(num) {
+  return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }

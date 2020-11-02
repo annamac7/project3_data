@@ -8,10 +8,6 @@ let myData = {
   ncm:	9483,
   ptm:	86372
 }
-//
-// Computer and Math	3,426,408	1,207,452
-// Architecture and Engineering	2,385,386	436,725
-// Life, and Physical, and Social Sciences	758,714	657,518
 
 let subjects = ['Computer and Math', 'Architecture and Engineering', 'Life, Physical, and Social Sciences']
 
@@ -47,14 +43,14 @@ function loadPie() {
       ],
       type: 'pie',
       colors: {
-        'Management, Business & Finance': '#a4aaab',
-        'Computer, Engineering & Science': 'cyan',
-        'Education, Legal, Community Service, Arts & Media' : '#8b8e8f',
-        'Health Care Practitoners and Technical Occupations' : '#bec1c2',
-        'Service' : '#5e6061',
-        'Natural Resources, Construction & Maintenance' : '#7c8082',
-        'Production, Transport & Material Moving' : '#bcc0c2',
-        'Sales & Office' : '#969899'
+        'Management, Business & Finance': '#008081',
+        'Computer, Engineering & Science': 'turquoise',
+        'Education, Legal, Community Service, Arts & Media' : '#4682b4',
+        'Health Care Practitoners and Technical Occupations' : '#89cff0',
+        'Service' : '#81d8d0',
+        'Natural Resources, Construction & Maintenance' : '#008ecc',
+        'Production, Transport & Material Moving' : '#72b5a5',
+        'Sales & Office' : '#89cff0'
       },
       onclick: function(d, i) {
         // console.log("onclick", d, i);
@@ -99,8 +95,8 @@ function loadTable() {
     var td3 = document.createElement('td');
 
     var text1 = document.createTextNode(subjects[i]);
-    var text2 = document.createTextNode(men[i]);
-    var text3 = document.createTextNode(female[i])
+    var text2 = document.createTextNode(comma(men[i]));
+    var text3 = document.createTextNode(comma(female[i]));
 
     td1.appendChild(text1);
     td2.appendChild(text2);
@@ -128,3 +124,8 @@ function getAverage(array){
 var avg = total / array.length;
 return avg
 }
+
+
+//https://blog.abelotech.com/posts/number-currency-formatting-javascript/
+function comma(num) {
+ return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}

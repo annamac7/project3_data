@@ -4,9 +4,6 @@ let allEarnings = [];
 
 $(document).ready(function() {
   console.log('ready! line');
-  // loadDataNow();
-
-
 });
 
 
@@ -23,8 +20,9 @@ function parseDataNow(states) {
   });
   categories = states.map(x => x.state);
   allEarnings = states.map(x => x.all_f)
-
 }
+
+
 //
 function loadLine(){
   Highcharts.setOptions({
@@ -38,11 +36,12 @@ function loadLine(){
           type: 'line'
       },
       title: {
-          text: 'Median Earnings by Sex for STEM Occupations (2013-2018)'
+          text: 'Median Earnings by Sex for STEM Occupations* (2013-2018)'
       },
       subtitle: {
-          text: 'Source: United States Census Bureau'
+          text: '*Computer, Engingeering, and Science | Source: United States Census Bureau'
       },
+
       xAxis: {
           categories: categories
       },

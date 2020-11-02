@@ -1,6 +1,5 @@
 $(document).ready(function() {
   console.log('ready! main');
-  // loadData();
 });
 
 let percents = [];
@@ -8,7 +7,6 @@ let dataArr = [];
 let curr = {};
 let percent_f = []
 let names = []
-
 
 function loadData() {
   $.getJSON("data.json", function(states) {
@@ -19,13 +17,11 @@ function loadData() {
 }
 
 function parseData(states) {
-
   $.each(states, function(i) {
     percents.push(states[i])
   });
   percent_f = states.map(x => x.ces);
   names = states.map(x => x.state);
-  // console.log(names)
   //create data array for chart 1
   for (var i = 0; i < percents.length; i++) {
     curr = {
@@ -40,10 +36,6 @@ function parseData(states) {
   }
 }
 
-
-
-
-
 function loadMap() {
   Highcharts.chart('container', {
     chart: {
@@ -53,7 +45,7 @@ function loadMap() {
     },
 
     accessibility: {
-      description: 'A tile map represents the states of the USA by population in 2016. The hexagonal tiles are positioned to geographically echo the map of the USA. A color-coded legend states the population levels as below 1 million (beige), 1 to 5 million (orange), 5 to 20 million (pink) and above 20 million (hot pink). The chart is interactive, and the individual state data points are displayed upon hovering. Three states have a population of above 20 million: California (39.3 million), Texas (27.9 million) and Florida (20.6 million). The northern US region from Massachusetts in the Northwest to Illinois in the Midwest contains the highest concentration of states with a population of 5 to 20 million people. The southern US region from South Carolina in the Southeast to New Mexico in the Southwest contains the highest concentration of states with a population of 1 to 5 million people. 6 states have a population of less than 1 million people; these include Alaska, Delaware, Wyoming, North Dakota, South Dakota and Vermont. The state with the lowest population is Wyoming in the Northwest with 584,153 people.',
+      description: 'Showing the percent of females in STEM jobs, broken down by state',
       screenReaderSection: {
         beforeChartFormat: '<h5>{chartTitle}</h5>' +
           '<div>{chartSubtitle}</div>' +
@@ -66,7 +58,7 @@ function loadMap() {
     },
 
     title: {
-      text: '% of females in STEM by State'
+      text: 'Breakdown of percent that women make up in STEM by State '
     },
 
     subtitle: {

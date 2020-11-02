@@ -14,7 +14,9 @@
   font-size: 14px !important;
 }
 
-
+.sans-serif {
+  font-family: "helvetica", arial, sans-serif !important;
+}
  a  {
   text-decoration: underline;
   color: #333 !important;
@@ -26,9 +28,10 @@ a:hover {
   color: #333 !important;
 }
 
-.nyt_body {
-  font-family: "times", Times, serif;
+p {
+  font-family: "times", times, serif !important;
   color: #333 !important;
+  font-size: 18px;
 }
 
 h1  {
@@ -101,6 +104,12 @@ margin-right: auto;
   #img_here {
     width: 100%;
     height: 400px;
+  }
+  #full {
+    display: none !important;
+  }
+  #small {
+    display: block !important;
   }
   .article_content {
     width: 100%;
